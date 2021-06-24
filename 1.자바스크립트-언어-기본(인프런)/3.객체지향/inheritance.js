@@ -19,19 +19,3 @@ Programmer.prototype.coding = function(){
 var p1 = new Programmer('esther');
 console.log(p1.introduce());
 console.log(p1.coding());
-
-
-//      2. prototype chain
-function Ultra(){}
-Ultra.prototype.ultraProp = true;
-
-function Super(){}
-Super.prototype = new Ultra();
-
-function Sub(){}
-Sub.prototype = new Super();
-Sub.prototype.ultraProp = 2;
-
-var o = new Sub();
-
-console.log(o.ultraProp);
