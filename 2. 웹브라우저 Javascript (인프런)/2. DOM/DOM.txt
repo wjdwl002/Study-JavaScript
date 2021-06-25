@@ -1,0 +1,5 @@
+1. DOM(Document Object Model)
+웹페이지를 자바스크립트로 제어하기 위한 객체 모델
+ Window : 창
+ Document : 윈도우에 로드된 문서
+
