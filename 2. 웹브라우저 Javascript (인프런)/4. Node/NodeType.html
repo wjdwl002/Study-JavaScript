@@ -1,0 +1,33 @@
+<!--노드 종류 API(재귀함수)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id='start'>
+        <li><a href="./532">html</a></li>
+        <li><a href="./533">css</a></li>
+        <li><a href="./534">javascript</a></li>
+        <ul id='start2'>
+            <li><a href="./535">Javascript Core</a></li>
+            <li><a href="./536">DOM</a></li>
+            <li><a href="./537">BOM</a></li>
+        </ul>
+    </ul>
+    <script>
+        function traverse(target, callback){ //재귀함수
+            if (target.nodeType === 1){
+                callback(target);
+                var c = target.childNodes;
+                for(var i =0; i<c.length; i++){
+                    traverse(c[i],callback)
+                }
+            }
+        }
+    </script>
+</body>
+</html>
