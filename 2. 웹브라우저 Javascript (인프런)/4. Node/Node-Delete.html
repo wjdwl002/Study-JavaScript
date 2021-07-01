@@ -16,7 +16,14 @@
     <script>
         function callRemoveChild(){
             var target = document.getElementById('target');
-            target.
+            if (target === null){
+                var target = document.getElementsByTagName('ul');
+                var li = document.createElement('li');
+                var text = document.createTextNode('Nothing');
+                li.appendChild(text);
+                target[0].insertBefore(li, target.firstChild);
+            }
+            else target.parentNode.removeChild(target);
         }
     </script>
 </body>
