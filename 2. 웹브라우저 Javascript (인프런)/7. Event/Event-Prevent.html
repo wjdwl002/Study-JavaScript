@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <label>prevent event on</label><input type="checkbox" id="prevent" name="eventprevent" value="on"/>
+    </p>
+    <p>
+        <a href="http://tistory.esthevely.com" onclick="if(document.getElementById('prevent').checked) return false;"></a>
+    </p>
+    <p>
+        <form action="http://tistory.esthevely.com" onsubmit="if(document.getElementById('prevent').checked) return false;">
+            <input type="submit">
+        </form>
+    </p>
+</body>
+</html>

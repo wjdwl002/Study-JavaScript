@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{border:5px solid teal; padding:30px;}
+        body{border:5px solid slategray; padding:30px;}
+        fieldset{border:5px solid skyblue; padding:30px;}
+        input{border:5px solid gray; padding:30px;}
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>event propagation</legend>
+        <input type="button" id="target" value="target"> <!--이 버튼을 클릭하면 이 상위의 element의 이벤트를 모두 호출하는 것과 마찬가지-->
+    </fieldset>
+    <script>
+        function handler(event){
+            var phases = ['capturing','target','bubbling']
+            console.log(event.target.nodeName, this.nodeName, phases[event.eventPhase-1]);
+        }
+        document.getElementById('target').addEventListener('click',handler,true);  //4
+        document.querySelector('fieldset').addEventListener('click',handler,true); //3
+        document.querySelector('body').addEventListener('click',handler,true);     //2
+        document.querySelector('html').addEventListener('click',handler,true);     //1
+    </script>
+</body>
+</html>

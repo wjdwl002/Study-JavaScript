@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="result.html" id="target">
+        <label for="name">name</label> <input type="name" id="name">
+        <input type="submit">
+    </form>
+    <script>
+        var t = document.getElementById('target');
+        t.addEventListener('submit', function(event){
+            if(document.getElementById('name').value.length===0){
+                alert("필드 값이 누락되었습니다.");
+                event.preventDefault(); //이벤트 발생 방지
+            }
+        })
+    </script>
+</body>
+</html>

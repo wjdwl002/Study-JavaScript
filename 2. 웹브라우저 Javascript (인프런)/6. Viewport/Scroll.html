@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #target{
+            border: lavender 20px solid;
+            margin:20px;
+            padding:30px;
+            padding-top:1000px;
+            padding-bottom: 1000px;
+        }
+    </style>
+    
+    <!--스크롤정보 확인-->
+    <table>
+        <tr><td>
+            <div>
+                <div id="target">
+                    Coding
+                </div>
+            </div>
+        </td></tr>
+    </table>
+    <script>
+        var t= document.getElementById('target');
+        setInterval(function(){
+            console.log('getBoundingClientRect : ', t.getBoundingClientRect().top, // element와 viewport.top과의 거리
+                        'pageYOffset : ', window.pageYOffset); //페이지와의 offset (스크롤한 정도)
+        },1000)
+    </script>
+</body>
+</html>
