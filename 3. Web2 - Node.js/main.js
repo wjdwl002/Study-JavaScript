@@ -38,8 +38,8 @@ var app = http.createServer(function(request, response){
     var queryData = url.parse(_url, true).query;
     var pathname = url.parse(_url, true).pathname;
     
-    if(pathname === '/'){
-        if(queryData.id === undefined){
+    if(pathname === '/'){ //main page이면
+        if(queryData.id === undefined){ //id
             fs.readdir('./3. Web2 - Node.js/data','utf8',function(err, description){
                 var title = 'Welcome';
                 var description = 'Hello, Node.js'
@@ -47,7 +47,7 @@ var app = http.createServer(function(request, response){
                 response.writeHead(200);
                 response.end(template);
             });
-        } else {
+        } else { //
             fs.readdir('./3. Web2 - Node.js/data', function(error, filelist){
                 fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
                     var title = queryData.id;
@@ -58,7 +58,7 @@ var app = http.createServer(function(request, response){
                 });
             });
         }
-    }else if (pathname === '/create'){
+    }else if (pathname === '/create'){ //create 페이지면
         fs.readdir('./data', function(error, filelist){
             var title = 'WEB - create';
             var list = templateList(filelist);
@@ -82,4 +82,4 @@ var app = http.createServer(function(request, response){
         response.end('NOT FOUND')
     }
 });
-app.listen(300);
+app.listen(304);
