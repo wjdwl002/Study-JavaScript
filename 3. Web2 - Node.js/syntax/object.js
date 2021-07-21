@@ -1,4 +1,4 @@
-var members = ['jiwon', 'jinpyo', 'kawon'];
+var members = ['jiwon', 'jinpyo', 'kawo'];
 var i =0; 
 while(i<members.length){
     console.log('array loop : ', members[i]);
