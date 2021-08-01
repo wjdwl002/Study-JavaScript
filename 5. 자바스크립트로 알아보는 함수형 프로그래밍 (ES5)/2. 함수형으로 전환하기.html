@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+var users = [
+    { id: 1, name: 'ID', age: 36},
+    { id: 2, name: 'BJ', age: 23},
+    { id: 3, name: 'JM', age: 32},
+    { id: 4, name: 'PJ', age: 16},
+    { id: 5, name: 'HA', age: 72},
+    { id: 6, name: 'JE', age: 31},
+    { id: 7, name: 'JI', age: 39},
+    { id: 8, name: 'MP', age: 6},
+]
+
+// 1. 명령형 코드
+    // 1) 30세 이상인 users를 거른다.
+    var above30_users = [];
+    for (var i =0; i<users.length; i++){
+        if (users[i].age >= 30) above30_users.push(users[i]);
+    }
+    console.log(above30_users);
+
+    // 2) 30세 이상인 users의 names를 수집한다.
+    var above30_users_name = [];
+    for (var i = 0; i<above30_users.length; i++){
+        above30_users_name.push(above30_users[i].name);
+    }
+    console.log(above30_users_name);
+
+    // 3) 30세 미만인 users를 거른다.
+    var below30_users = [];
+    for (var i =0; i<users.length; i++){
+        if (users[i].age < 30) below30_users.push(users[i]);
+    }
+    console.log(below30_users);
+
+
+    // 4) 30세 미만인 users의 ages를 수집한다.
+    var below30_users_name = [];
+    for (var i = 0; i<below30_users.length; i++){
+        below30_users_name.push(below30_users[i].name);
+    }
+    console.log(below30_users_name);
+
+
+// 2. _filter, _map으로 리팩토링 
+function _filter(users,predi){ //응용형 함수 : 함수를 param으로 받음
+    var new_list = [];
+        for (var i =0; i<users.length; i++){
+            if (predi(users[i])) new_list.push(users[i]);
+        }
+    return new_list;
+}
+above30_users2 = _filter(users,function(user){ return user.age >= 30 })
+below30_users2 = _filter(users,function(user){ return user.age < 30 })
+console.log(above30_users2);
+console.log(below30_users2)
+// 3. each 만들기
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
