@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <script src="2-3.js"></script>
     <script>
 
 var users = [
@@ -21,6 +22,7 @@ var users = [
 ]
 
 // 1. 명령형 코드
+
     // 1) 30세 이상인 users를 거른다.
     var above30_users = [];
     for (var i =0; i<users.length; i++){
@@ -49,27 +51,54 @@ var users = [
         below30_users_name.push(below30_users[i].name);
     }
     console.log(below30_users_name);
+    
 
 
-// 2. _filter, _map으로 리팩토링 
-function _filter(users,predi){ //응용형 함수 : 함수를 param으로 받음
-    var new_list = [];
-        for (var i =0; i<users.length; i++){
-            if (predi(users[i])) new_list.push(users[i]);
+// 2. _filter, _map으로 리팩토링
+
+    //1) _filter
+    function _filter(users,predi){ //응용형 함수 : 함수를 param으로 받음
+        var new_list = [];
+            for (var i =0; i<users.length; i++){
+                if (predi(users[i])) new_list.push(users[i]);
+            }
+        return new_list;
+    }
+    above30_users = _filter(users,function(user){ return user.age >= 30 })
+    below30_users = _filter(users,function(user){ return user.age < 30 })
+    console.log(above30_users);
+    console.log(below30_users)
+
+    //2) _map
+    function _map(list, mapper){
+        var new_list = [];
+        for (var i = 0; i<list.length; i++){
+            new_list.push(mapper(list[i]));
         }
-    return new_list;
-}
-above30_users2 = _filter(users,function(user){ return user.age >= 30 })
-below30_users2 = _filter(users,function(user){ return user.age < 30 })
-console.log(above30_users2);
-console.log(below30_users2)
-// 3. each 만들기
+        return new_list;
+    }
+    above30_users_name = _map(users,function(user){ return user.name; });
+    below30_users_age = _map(users,function(user){ return user.age; });
+    console.log(above30_users_name);
+    console.log(below30_users_age);
 
 
 
-
-
-
+// 3. 커링
+    // 1) _curry, _curryr
+    function _curry(fn){
+        return function(a){
+            return function(b){
+                return fn(a,b);
+            }
+        }
+    }
+    
+    var add = function(a, b){ return a + b; }
+    console.log(add(1,2))
+    
+    var add10 = _curry(add(10));
+    console.log(add10(5));
 
     </script>
 </body>
