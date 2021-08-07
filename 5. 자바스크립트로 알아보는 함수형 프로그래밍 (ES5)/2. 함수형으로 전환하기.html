@@ -137,8 +137,16 @@ var users = [
     console.log(_get('name')(user1));
     console.log(get_name(user1));
 
-//4. _reduce 만들기
+// 4. _reduce 만들기
+var slice = Array.prototype.slice;
+function _rest(list, num){
+    return slice.call(list, num || 1);
+}
 function _reduce(list, iter, memo){
+    if(arguments.length == 2){
+        memo = list[0];
+        list = _rest(list);
+    }
     _each(list, function(val){
         memo = iter(memo, val);
     })
@@ -149,7 +157,36 @@ console.log(
     _reduce([1, 2, 3, 4], add, 0));
 
 
+// 5. 파이프라인 만들기
+    // 1) _pipe
+    function _pipe(){
+        var fns = arguments;
+        return function(arg){
+            return _reduce(fns, function(arg, fn){
+                return fn(arg);
+            },arg)
+        }
+    }
+    var f1 = _pipe(
+        function(a) {return a + 1;},
+        function(a) {return a * 2;},
+        function(a) {return a * a;}
+    );
+    console.log(f1(1));
 
+
+    // 2) _go
+    // 즉시 실행되는 파이프 함수; 두번째 인자부터 함수를 받아서 연속적으로 실행해주는 함수
+    function _go(arg){
+        var fns = _rest(arguments);
+        _pipe.apply(null, fns)(arg);
+    }
+    _go(1,
+        function(a) {return a + 1;},
+        function(a) {return a * 2;},
+        function(a) {return a * a;},
+        console.log
+    );
     </script>
 </body>
 </html>
