@@ -8,6 +8,7 @@
 </head>
 <body>
     <script src="2-3.js"></script>
+    <script src="2. _each 함수.js"></script>
     <script>
 
 var users = [
@@ -85,21 +86,69 @@ var users = [
 
 
 // 3. 커링
-    // 1) _curry, _curryr s
-    function _curry(fn){
-        return function(a){
-            return function(b){
-                return fn(a,b);
-            }
+    // 1) _curry, _curryr 
+    function _curry(fn){ 
+        return function(a, b){
+            return arguments.length == 2 ? fn(a, b) : function(b) {return fn(a,b);};
+        }
+    }
+
+    function _curryr(fn){
+        return function(a, b){
+            return arguments.length == 2 ? fn(a, b) : function(b) {return fn(b, a);};
         }
     }
     
-    var add = function(a, b){ return a + b; }
-    console.log(add(1,2))
+    var add = _curry(function(a, b){ return a + b; });
     
-    var add10 = _curry(add(10));
+    var add10 = add(10); //클로저
+    var add5 = add(5);
     console.log(add10(5));
+    console.log(add(10)(5));
+    console.log(add5(3));
     console.log(add(5)(3));
+    console.log(add(5,3));
+
+
+    var sub = _curryr(function(a, b){ return a - b; });
+
+    var sub10 = sub(10); //클로저
+    var sub5 = sub(5);
+    console.log(sub10(5));
+    console.log(sub(10)(5));
+    console.log(sub5(3));
+    console.log(sub(5)(3));
+    console.log(sub(5,3));
+
+
+    // 2) _get 만들어 좀 더 간단하게 하기 
+    // function _get(obj, key){
+    //     return obj == null ? undefined : obj[key];
+    // }
+    var _get = _curryr(function(obj, key){
+        return obj == null ? undefined : obj[key];
+    });
+
+    var get_name = _get('name');
+    
+    var user1 = users[0];
+    console.log(user1.name);
+    console.log(_get(user1,'name'));
+    console.log(_get('name')(user1));
+    console.log(get_name(user1));
+
+//4. _reduce 만들기
+function _reduce(list, iter, memo){
+    _each(list, function(val){
+        memo = iter(memo, val);
+    })
+    return memo;
+}
+
+console.log( 
+    _reduce([1, 2, 3, 4], add, 0));
+
+
 
     </script>
 </body>
