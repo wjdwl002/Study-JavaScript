@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. 컬렉션 중심 프로그래밍</title>
+</head>
+<body>
+<script src="2. library.js"></script>
+<script>
+
+    var users = [
+    { id: 1, name: '진표', age: 25},
+    { id: 2, name: 'BJ', age: 23},
+    { id: 3, name: 'JM', age: 32},
+    { id: 4, name: 'PJ', age: 16},
+    { id: 5, name: 'HA', age: 72},
+    { id: 6, name: 'JE', age: 31},
+    { id: 7, name: 'JI', age: 39},
+    { id: 8, name: 'MP', age: 6},
+];
+
+//컬렉션 중심 프로그래밍의 4가지 유형과 함수
+
+// 1. 수집하기 - map
+console.log(_map(users,function(user){ return user.name; }));
+
+    // 1) values : list 내 모든 obj의 value return
+    // function _values(data){
+    //     return _map(data, function(val) { return val; })
+    // };
+    function _values(list){
+        return _map(list, _identity);}
+    function _identity(list){ return list; }
+
+    //var _values = _map(_identity);
+
+    console.log(users[0]);
+    console.log(_keys(users[0]));
+    console.log(_values(users[0]));   
+
+    // 2) pluck : list 내 모든 obj의 key return
+    function _pluck(list, key) {
+        return _map(list, _get(key));
+    }
+
+    console.log(_pluck(users,'name'));
+
+
+// 2. 거르기 - filter
+
+    // 1)  reject : 조건에 맞지 않는 값만 반환
+    function _negate(func){
+        return function(val){
+            return !func(val);}}        //-------> 한줄로 리턴하는거랑 뭔차이?
+
+    function _reject(list, predi){
+        return _filter(list, _negate(predi));}
+
+
+    console.log(_reject(users, function(user) {return user.age > 30; }));
+
+    // 2) compact : 값이 있는 항목만 모아서 새 배열 생성
+    
+
+
+// 3. 찾아내기 - find
+
+    // 1) find : 배열을 돌면서 조건에 맞는 첫번째 값을 리턴
+    // function _find(list, predi){
+    //     var keys = _keys(list);
+    //     for (var i =0, len = keys.length; i<len; i++ ){
+    //         var val = list[keys[i]];
+    //         if(predi(val)) return val; }}
+    var _find = _curryr(function(list, predi){
+        var keys = _keys(list);
+        for (var i =0, len = keys.length; i<len; i++ ){
+            var val = list[keys[i]];
+            if(predi(val)) return val;
+        }
+    });
+
+    console.log(
+        _find(users, function(user){
+            return user.age >= 20;}));
+    
+    // 2) find_index 
+    // function _find_index(list, predi){
+    //     var keys = _keys(list);
+    //     for (var i =0, len = keys.length; i<len; i++ ){
+    //         var val = list[keys[i]];
+    //         if(predi(val)) return i; }
+    //     return -1;}
+    var _find_index = _curryr(
+        function _find_index(list, predi){
+        var keys = _keys(list);
+        for (var i =0, len = keys.length; i<len; i++ ){
+            var val = list[keys[i]];
+            if(predi(val)) return i; }
+        return -1;}
+    )
+    
+    console.log(
+        _find_index(users, function(user){
+            return user.age >= 20;}));
+
+    console.log(
+        _get(
+        _find(users, function(user){
+            return user.age >= 20;}),
+        'name'));
+
+    _go(users,
+    _find(function(user){return user.age>25;}),
+    _get('name'),
+    console.log);
+
+    // 3) some : list 내에서 predi를 만족하는 obj가 하나라도 있으면 return true  
+    function _some(list, predi){
+        return _find_index(list, predi || _identity) != -1;
+    }
+
+    console.log(_some(users,function(user){
+        return user.age>80;
+    }));
+
+    // 4) every : list 내에서 모든 obj가 predi를 만족하면 return true
+    // function _every(list, predi){
+    //     return _find_index(list, _negate(predi)) != -1;
+    // }
+    var _every = function(list, predi){
+        return _find_index(list, _negate(predi)) == -1;
+    }
+
+    console.log(_every(users,function(user){
+        return user.age>20;
+    }));
+
+</script>
+</body>
+</html>

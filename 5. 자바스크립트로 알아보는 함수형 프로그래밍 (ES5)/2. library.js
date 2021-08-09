@@ -7,7 +7,7 @@ function _filter(list,predi){ //응용형 함수 : 함수를 param으로 받음
     return new_list;
 }
 
-//2) _map
+//2) _map : list 내의 원소들을 mapper 함수에 돌려서 나온 값으로 새로운 리스트 생성
 function _map(list, mapper){
     var new_list = [];
     for (var i = 0; i<list.length; i++){
@@ -69,7 +69,7 @@ function _pipe(){
 //8) _keys
 function _is_object(obj){ return typeof obj == 'object' && !!obj; };
 function _keys(obj){
-    return _is_object(obj) ? Objects.keys(obj) : [];
+    return _is_object(obj) ? Object.keys(obj) : [];
 }
 
 
