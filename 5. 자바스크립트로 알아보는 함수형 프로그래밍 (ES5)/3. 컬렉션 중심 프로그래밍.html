@@ -162,10 +162,10 @@ console.log(_map(users,function(user){ return user.name; }));
 
     console.log(_min_by(_list, Math.abs));
     console.log(_min_by(users, function(user){ return user.age; }));
-    _go(users,
-    _filter(function(user) {return user.age > 30 && user.age < 40;}),
-    _min_by(_get('age')),
-    console.log)
+    // _go(users,
+    // _filter(function(user) {return user.age > 30 && user.age < 40;}),
+    // _min_by(_get('age')),
+    // console.log) -> 실행 안됨 .. 왤까?
 
 
     // 4) _max_by : list 내에서 by에 의해 가장 큰 값을 return
@@ -175,6 +175,45 @@ console.log(_map(users,function(user){ return user.name; }));
 
 
     // 5) _group_by : 
+    function _push(obj, key, val){
+        (obj[key] = obj[key] || []).push(val);
+        return obj;
+    }
+
+    var _group_by = _curryr(function(data, iter){
+        return _reduce(data, function(grouped, val){
+            return _push(grouped, iter(val)); //3줄을 1줄로 압축
+            // var key = iter(val);
+            // (grouped[key] = grouped[key] || []).push(val); //key로 만든 배열이 있었으면 추가, 없었으면 빈 배열에 추가
+            // return grouped;
+        }, {})
+    });
+
+    _go(users,  //나이별 그룹핑
+        _group_by(function(user){ return user.age; }),
+        console.log);
+
+    _go(users, //나이대별 그룹핑
+        _group_by(function(user){ return user.age - user.age % 10; }),
+        console.log)
+
+    // 6) count_by 
+    var _inc = function(count, key){
+        count[key] ? count[key]++ : count[key] = 1;
+        return count;
+    }
+
+    var _count_by = _curryr(function(data, iter){
+        return _reduce(data, function(count, val){
+            return _inc(count, iter(val));
+        }, {})
+    }) 
+
+    console.log(_count_by(users, function(user){ return user.age;}));
+    
+    
+    
+
     
 </script>
 </body>
