@@ -1,0 +1,1 @@
+console.log("문자열 한번에 문자열 변경".replaceAll("문자열", " "));
