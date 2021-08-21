@@ -1,0 +1,29 @@
+//filter, includes, from을 사용해서 문자열 'e'가 포함된 노드로 구성된 배열을 만들어서 반환하기
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Bin</title>
+</head>
+<body>
+    <ul>
+        <li>apple</li>
+        <li>orange</li>
+        <li>banana</li>
+        <li>strawberry</li>
+    </ul>
+
+    <script>
+        const list = document.querySelectorAll('li');
+        const listArray = Array.from(list).map(v=>v.innerText);
+        function print(list){
+            let newData = list.filter(function(v) {return v.includes("e")});
+            
+            return newData;
+        }
+        console.log(print(listArray));
+    </script>
+</body>
+</html>
