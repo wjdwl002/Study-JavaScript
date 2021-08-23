@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Multi</title>
+</head>
+<body>
+    <button style="width : 100px; height : 20px"
+            onclick="
+        fnProductReady(1,2000)//1번째 처리, 2000ms 지연시간 
+            .then((pResult1) => {
+                console.log(pResult1);
+                return fnProductReady(2, 1000);//2번째 처리, 1000ms 지연시간
+            })
+            .then((pResult2) => {
+                console.log(pResult2);
+                return fnProductReady(3, 1000);//3번째 처리, 1000ms 지연시간
+            })
+            .then((pResult3) => console.log(pResult3));
+        
+    ">상품 배송</button>
+
+    <script>
+        function fnProductReady(pNum, pTime){//pNum번째 처리,pTime 지연시간
+            return new Promise((fnResolve)=>{
+                setTimeout(()=>{
+                console.log(pNum);
+                fnResolve("상품배송 성공");
+            }, pTime);
+        })};
+    </script>
+</body>
+</html>
