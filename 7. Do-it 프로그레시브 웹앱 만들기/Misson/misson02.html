@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misson 02</title>
+</head>
+<body>
+    <h1>입력된 숫자의 범주 판별하기</h1>
+    <h2>1부터 100 범위 안의 숫자를 입력하세요</h2>
+    <input type="text" id="comIn" value=""/>
+    <button onclick="fnMeasure()">확인</button>
+    <p>입력 결과</p>
+    <textarea id="comOutput" cols="30" rows="10"></textarea>
+
+    <script>
+        function fnMeasure(){
+            let iNumber, strResult;
+            iNumber = document.getElementById("comIn").value;
+            if(iNumber <1 || iNumber >100) strResult = "실패";
+            else strResult = "성공";
+            document.getElementById("comOutput").innerHTML = strResult;
+        }
+    </script>
+</body>
+</html>

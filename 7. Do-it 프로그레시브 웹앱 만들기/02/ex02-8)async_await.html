@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Await</title>
+</head>
+<body>
+    <button style="width:200px; height:20px"
+            onclick="fnDoAsyncFunc()">Async, Await : 상품 배송</button>
+
+    <script>
+        async function fnDoAsyncFunc(){
+            console.log(await fnProductReady(1,2000));
+            console.log(await fnProductReady(2,1000));
+            console.log(await fnProductReady(3,500));
+        } //await 빼면 3->2->1 순서대로 실행
+        function fnProductReady(pNum, pTime){
+            return new Promise((resolve)=>{
+                setTimeout(() => {
+                    console.log(pNum);
+                    resolve("상품 배송 성공");
+                }, pTime);
+            });
+        }
+        
+    </script>
+</body>
+</html>
