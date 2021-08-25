@@ -11,4 +11,4 @@ const data = [
 ]
 
 const template = `<div>welcome ${data[0].name} !!</div>`;
-console.log(template);
+console.log(template);  
