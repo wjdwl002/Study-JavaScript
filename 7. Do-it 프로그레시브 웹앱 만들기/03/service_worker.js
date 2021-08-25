@@ -10,7 +10,7 @@ self.addEventListener('install', pEvent=>{ //PWA 설치
     pEvent.waitUntil(caches.open(sCacheName) //설치 될때까지 기다림
     .then(pCache => { //설치되면 캐시 저장
         console.log("Saved Files in Cache");
-        return pCache.addAll("aFilesToCache");
+        return pCache.addAll("aFilesToCache");ㅁ
     }))
 })
 

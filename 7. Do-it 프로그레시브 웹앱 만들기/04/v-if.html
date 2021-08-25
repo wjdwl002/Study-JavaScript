@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        html,body{
+            background-color:teal;
+            font-family: 'Apple SD Gothic Neo','Malgun Gothic',arial,sans-serif !important;}
+        div{
+            color : white;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>{{bFlag}}</h1>
+        <p v-if="bFlag == true">앞면</p>
+        <p v-else>뒷면</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data : {
+                bFlag: Math.random() > 0.5
+            }
+        })
+    </script>
+</body>
+</html>
