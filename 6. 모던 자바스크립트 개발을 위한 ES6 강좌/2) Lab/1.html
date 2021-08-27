@@ -16,14 +16,23 @@
     </ul>
 
     <script>
-        const list = document.querySelectorAll('li');
-        const listArray = Array.from(list).map(v=>v.innerText);
-        function print(list){
-            let newData = list.filter(function(v) {return v.includes("e")});
-            
-            return newData;
+        function RequestData(){
+            return Math.random >0.5;
         }
-        console.log(print(listArray));
+
+        const oProductReady = new Promise(function(fnResolve, fnReject){
+        let bStatus = RequestData();
+
+        if (bStatus){fnResolve("Success");}
+        else {fnReject("Fail");}
+        });
+
+        oProductReady.then(function(pResult){
+            console.log(pResult);
+        },function(pErrMsg){
+            console.log(pErrMsg);
+        })
+        
     </script>
 </body>
 </html>
