@@ -11,14 +11,15 @@
             background-color:teal;
             font-family: 'Apple SD Gothic Neo','Malgun Gothic',arial,sans-serif !important;}
         div,p{
+            margin: 30px;
             font-family: 'Apple SD Gothic Neo','Malgun Gothic',arial,sans-serif !important;
             color : white;
-            font-size: 10px;
+            font-size: 1.5rem;
         }
     </style>
     <script>
-        Vue.component('favorite-fruit',{
-            props:['fruit'],
+        Vue.component('favorite-fruit',{//이 이름으로 component 등록
+            props:['fruit'],//attribute name
             template : `<li>{{ fruit.text }}</li>`
         })
     </script>
@@ -27,7 +28,7 @@
     <div id="app">
         <h1>좋아하는 과일</h1>
         <ol>
-            <favorite-fruit v-for="item in a Fruits"
+            <favorite-fruit v-for="item in aFruits"
                             v-bind:fruit="item"
                             v-bind:key="item.id">
             </favorite-fruit>
