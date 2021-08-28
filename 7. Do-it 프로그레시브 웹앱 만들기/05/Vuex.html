@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuex</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/vuex"></script>
+    <style>
+        html,body{
+            background-color:teal;
+            font-family: 'Apple SD Gothic Neo','Malgun Gothic',arial,sans-serif !important;}
+        div,p{
+            margin: 30px;
+            font-family: 'Apple SD Gothic Neo','Malgun Gothic',arial,sans-serif !important;
+            color : white;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>HELLO</h1>
+        <!--카운터 엘리먼트 2개 사용-->
+        <com-counter msg="카운터1"></com-counter>
+        <com-counter msg="카운터2"></com-counter>
+    </div>
+
+    <script>
+        const store = new Vuex.Store({
+            state:{ //공유한 상탯값 데이터 정의
+                count : 0
+            },
+            mutations:{ //외부에서 동기 방식으로 저장
+                //fnIncData : count 증가
+                fnIncData: function(state){
+                    return state.count++;
+                },
+                //fnDecData : count 증가
+                fnDecData: function(state){
+                    return state.count--;
+                }
+            },
+            getters:{ //state의 데이터값을 외보에서 읽을때
+                //fnGetData : state값 반환
+                fnGetData(state){
+                    return state.count;
+                }
+            },
+            actions:{ //외부의 API실행 등 비동기 실행을 관리
+                //상탯값을 감소시키는 함수는 서버에서 실행한다고 가정
+                //비동기 실행을 위해 async를 사용하고 매개변수로 commit 객체 전달
+                async fnDecData({
+                    commit
+                },state){
+                    const result = await api.fnDecrement();
+                    if(result == true) commit('fnDecData');
+                }
+            }
+        })
+    </script>
+</body>
+</html>
