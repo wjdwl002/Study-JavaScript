@@ -4,8 +4,8 @@
   <router-view></router-view>
   <hr>
   <p>ROUTER LINK : 
-  <router-link to="/main">MAIN PAGE</router-link>
-      <router-link to="/sub">SUB PAGE</router-link>
+  <router-link to="/main">MAIN PAGE </router-link>
+  <router-link to="/sub">  SUB PAGE</router-link>
   </p>
   </div>
 </template>

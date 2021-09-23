@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link href="https://fonts.googleapis.com/css?family=
+                Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <title>Hello Simple</title>
+</head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-app-bar app color="secondary" dark fixed>
+                <v-app-bar-nav-icon></v-app-bar-nav-icon>
+                <v-toolbar-title>MASTER PAGE</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-btn icon>
+                    <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+            </v-app-bar>
+            <v-content>
+                <v-container>
+                    <h1 class="display-1 my-4">HELLO</h1>
+                    <p class="body-1 my-4">THIS IS BODY PARAGRAPH</p>
+                    <v-divider></v-divider>
+                    <h1 class="display-2 my-4">HELLO</h1>
+                    <p class="body-2 my-4">THIS IS BODY PARAGRAPH</p>
+                    <v-divider></v-divider>
+                    <h1 class="display-3 my-4">HELLO</h1>
+                    <p class="subtitle-1 my-4">THIS IS SUBTITLE PARAGRAPH</p>
+                    <v-divider></v-divider>
+                    <h1 class="display-4 my-4">HELLO</h1>
+                    <p class="subtitle-2 my-4">THIS IS THIS IS SUBTITLE PARAGRAPH</p>
+                    <v-divider></v-divider>
+                    <h1 class="display-5 my-4">HELLO</h1>
+                    <p class="caption my-4">THIS IS caption</p>
+                </v-container>
+            </v-content>
+            <v-footer color="secondary" dark fixed>
+                <div class="mx-auto">Copyright &copy</div>
+            </v-footer>
+        </v-app>
+    </div>
+</body>
+<style>
+    body{
+        text-align: center;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/vue#2.x/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        vuetify:new Vuetify()
+    })
+</script>
+</html>

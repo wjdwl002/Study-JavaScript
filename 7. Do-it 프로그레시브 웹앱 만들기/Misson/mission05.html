@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>MISSON05</title>
+</head>
+<body>
+    <h1>MISSION05</h1>
+    <hr>
+    <div id="main">
+        <simple-counter startnumber="1"></simple-counter>
+        <simple-counter startnumber="10"></simple-counter>
+        <simple-counter startnumber="100"></simple-counter>
+    </div>
+</body>
+<style>
+    body{
+        background-color: darkslategrey;
+        color : white;
+        text-align: center;
+    }
+</style>
+<script>
+    Vue.component('simple-counter',{
+        props:['startnumber'],
+        template:`
+        <button v-on:click="fnIncCounter">
+        COUNTER: {{nCounter}}
+        </button>
+        `,
+        data:function(){
+            return { nCounter : parseInt(this.startnumber) }
+        }, 
+        computed:{
+            fnGetCounter: function(){
+                return this.nCounter;
+            }
+        },
+        methods:{
+            fnIncCounter: function(){
+                this.nCounter+=1;
+            }
+        }
+    })
+    new Vue({
+        el: "#main"
+    })
+</script>
+</html>

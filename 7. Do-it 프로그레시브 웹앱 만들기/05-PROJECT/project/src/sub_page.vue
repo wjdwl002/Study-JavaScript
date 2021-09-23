@@ -7,7 +7,7 @@
 <script>
 export default{
     methods:{
-        fmSubPage(){
+        fnMainPage(){
             this.$router.push('/main')
         }
     }
