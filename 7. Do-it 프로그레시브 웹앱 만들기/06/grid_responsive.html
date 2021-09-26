@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link href="https://fonts.googleapis.com/css?family=
+                Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <title>Grid Responsive</title>
+</head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-app-bar app flat color="primary" dark>
+                <v-toolbar-title class="white-text mx-auto">AESOP</v-toolbar-title>
+            </v-app-bar>
+            <v-content>
+                <v-container>
+                    <v-row>
+                        <v-col cols="12" sm="6">
+                            <h2 class="mb-3">ABOUT AESOP</h2>
+                            <p>이솝은 브라질 기업 나투라앤코 가 소유한 호주 고급 스킨케어 브랜드이다. 이솝은 스킨케어 이외에도 헤어관리제품, 비누, 향수 등을 생산한다. 각각의 이솝 매장은 다양한 건축가, 인테리어 디자이너, 아티스트가 공동으로 디자인하여 독특한 실내 디자인을 자랑한다.</p>
+                        </v-col>
+
+                        <v-col cols="12" sm="6">
+                            <h2 class="mb-3">AESOP's TARGET</h2>
+                            <p>1. 가을 바람은 지친 마음에 한줄기 위안을,</p>
+                            <p>2. 고립된 이들에게는 회복의 기운을 실어다 줍니다.</p>
+                            <p>3. 다가오는 가을에 이솝은 내일의 바람을 싣습니다.</p>
+                        </v-col>
+                    </v-row>
+                </v-container>
+            </v-content>
+            <v-footer color="primary" dark>
+                <div class="mx-auto">Copyright &copy; {{ new Date().getFullYear() }}</div>
+            </v-footer>
+        </v-app>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue#2.x/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        vuetify:new Vuetify()
+    })
+</script>
+</body>
+</html>
