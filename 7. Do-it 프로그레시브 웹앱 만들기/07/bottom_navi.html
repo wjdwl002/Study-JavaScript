@@ -5,31 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=
-                    Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+                Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
     <title>Bottom_Navi</title>
 </head>
-<body>
+<body> 
     <div id="app">
         <v-app>
             <v-content>
-                <v-card height="100%" class="d-flex display-2 align-center justify-center">선택 : {{sSelect}}</v-card>
+                <v-card height="100%" class='d-flex display-2 align-center justify-center'>선택 : {{ sSelect }}</v-card>
             </v-content>
             <v-footer>
                 <v-bottom-navigation absolute v-model="sSelect" dark>
-                    <v-btn text value="자전거">
-                        자전거
+                    <v-btn text value="자전거">자전거
                         <v-icon>directions_bike</v-icon>
                     </v-btn>
-                    <v-btn text value="버스">
-                        버스
+                    <v-btn text value="지하철">지하철
+                        <v-icon>subway</v-icon>
+                    </v-btn>
+                    <v-btn text value="버스">버스
                         <v-icon>directions_bus</v-icon>
                     </v-btn>
-                    <v-btn text value="지하철">
-                        지하철
-                        <v-icon>directions_subway</v-icon>
-                    </v-btn>
+                    
                 </v-bottom-navigation>
             </v-footer>
         </v-app>
@@ -42,10 +40,9 @@
             el:'#app',
             vuetify:new Vuetify(),
             data:{
-                sSelect : '자전거'
+                sSelect:'자전거'
             }
         })
     </script>
-
 </body>
 </html>
