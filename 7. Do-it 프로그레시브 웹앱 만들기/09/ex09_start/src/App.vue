@@ -29,7 +29,7 @@
                       <v-list-item-title :class="{'style_completed' : item.b_completed}">{{ item.todo_title }}</v-list-item-title>
                       <v-list-item-subtitle class="mt-2">
                         <v-icon class="pointer" @click="fnSetEditTodo(item['.key'])">create</v-icon>
-                        <v-icon class="pointer" @click="fnRemoveTodo(item['key'])">cancel</v-icon>
+                        <v-icon class="pointer" @click="fnRemoveTodo(item['.key'])">cancel</v-icon>
                       </v-list-item-subtitle>
                     </v-list-item-content>
                   </v-list-item>
@@ -42,10 +42,10 @@
                     <v-card-text>
                       <v-text-field autofocus clearable v-model="item.todo_title"></v-text-field>
                     </v-card-text>
-                    <v-card-action>
+                    <v-card-actions>
                         <v-icon class="pointer" @click="fnSaveEdit(item)">create</v-icon>
-                        <v-icon class="pointer" @click="fnCancelEdit(item['key'])">cancel</v-icon>
-                    </v-card-action>
+                        <v-icon class="pointer" @click="fnCancelEdit(item['.key'])">cancel</v-icon>
+                    </v-card-actions>
                   </v-list-item>
                 </v-card>
               </v-list>
@@ -63,9 +63,7 @@ export default {
   name: 'App',
   data(){
     return {
-      oTodos : [
-        {todo_title : "hi", b_completed: false, b_edit: false},
-      ],
+      oTodos : [],
       sTodoTitle: ''
     }
   },
